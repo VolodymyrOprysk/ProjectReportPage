@@ -1,0 +1,117 @@
+:root {
+  /* Official NATO Identity Colors */
+  --nato-blue: #004990;
+  --nato-navy: #002244;
+  --nato-deep-navy: #00152a;
+  --nato-light-blue: #e8f1fa;
+  --nato-blue-hover: #003b75;
+  --nato-border-glow: rgba(0, 73, 144, 0.18);
+
+  /* Green Energy & Clean Chemistry Accents */
+  --energy-green: #10b981;
+  --energy-green-bright: #34d399;
+  --energy-green-dark: #047857;
+  --energy-green-tint: #ecfdf5;
+  --energy-green-border: rgba(16, 185, 129, 0.25);
+  --energy-teal: #0d9488;
+  --energy-gradient: linear-gradient(135deg, #004990 0%, #0d9488 50%, #10b981 100%);
+  --energy-accent-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --nato-accent-gradient: linear-gradient(135deg, #002244 0%, #004990 100%);
+
+  /* Neutral Light Theme Backgrounds & Surfaces */
+  --bg-main: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-muted: #f1f5f9;
+  --bg-surface-highlight: #f0fdf4;
+  --bg-hero: linear-gradient(180deg, #edf5fc 0%, #f8fafc 100%);
+
+  /* Text & Typography Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --text-on-dark: #ffffff;
+  --text-on-energy: #ffffff;
+  --text-link: #004990;
+  --text-link-hover: #047857;
+
+  /* Borders & Dividers */
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-focus: #10b981;
+
+  /* Elevation & Shadows */
+  --shadow-xs: 0 1px 2px rgba(0, 34, 68, 0.05);
+  --shadow-sm: 0 2px 4px rgba(0, 34, 68, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 6px 16px -2px rgba(0, 34, 68, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 14px 28px -4px rgba(0, 34, 68, 0.12), 0 4px 10px -2px rgba(0, 0, 0, 0.06);
+  --shadow-green-glow: 0 8px 24px -4px rgba(16, 185, 129, 0.28);
+  --shadow-blue-glow: 0 8px 24px -4px rgba(0, 73, 144, 0.22);
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Layout Container */
+  --max-width-container: 1200px;
+  --header-height: 76px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Four-Hue Accent Scale (merged from the Project Card mockup)
+ * Blue & green stay dominant for NATO SPS identity; amber and violet
+ * are used sparingly to differentiate topics, teams and news items.
+ * ------------------------------------------------------------------ */
+:root {
+  --accent-blue: #004990;
+  --accent-blue-deep: #002d5c;
+  --accent-blue-tint: #eef4fb;
+  --accent-blue-border: rgba(0, 73, 144, 0.38);
+
+  --accent-green: #0d8f6f;
+  --accent-green-deep: #07584a;
+  --accent-green-tint: #ebf8f4;
+  --accent-green-border: rgba(13, 143, 111, 0.38);
+
+  --accent-amber: #9a6414;
+  --accent-amber-deep: #6b4409;
+  --accent-amber-tint: #fdf5e8;
+  --accent-amber-border: rgba(154, 100, 20, 0.34);
+
+  --accent-violet: #6b3fa0;
+  --accent-violet-deep: #47296c;
+  --accent-violet-tint: #f5f0fb;
+  --accent-violet-border: rgba(107, 63, 160, 0.32);
+
+  /* Country fills for the consortium map (lighter than the accents, darker than tints) */
+  --accent-blue-map: #b6cee6;
+  --accent-green-map: #a6dbce;
+  --accent-amber-map: #ebd5ad;
+  --accent-violet-map: #d3c2e8;
+  --map-canvas-bg: #eef2f7;
+
+  /* Mono label system (mockup signature: uppercase, letter-spaced) */
+  --label-size: 0.7rem;
+  --label-tracking: 0.12em;
+
+  /* Squarer surfaces for data-dense mockup blocks */
+  --radius-tile: 4px;
+}
+
+/* Accent binding helper: any element with data-accent gets its hue set. */
+[data-accent="blue"]   { --a: var(--accent-blue);   --a-deep: var(--accent-blue-deep);   --a-tint: var(--accent-blue-tint);   --a-border: var(--accent-blue-border); }
+[data-accent="green"]  { --a: var(--accent-green);  --a-deep: var(--accent-green-deep);  --a-tint: var(--accent-green-tint);  --a-border: var(--accent-green-border); }
+[data-accent="amber"]  { --a: var(--accent-amber);  --a-deep: var(--accent-amber-deep);  --a-tint: var(--accent-amber-tint);  --a-border: var(--accent-amber-border); }
+[data-accent="violet"] { --a: var(--accent-violet); --a-deep: var(--accent-violet-deep); --a-tint: var(--accent-violet-tint); --a-border: var(--accent-violet-border); }
