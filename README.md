@@ -31,7 +31,10 @@ The current design merges two sources:
 
 ```
 NATO web site/
-├── index.html                  # Section shells; all content is hydrated from js/data.js
+├── index.html                  # Home: hero, Team, Project Overview, Contact
+├── results.html                # Key results + Publications
+├── news.html                   # News & updates
+├── gallery.html                # Gallery — Team and Lab photos
 ├── README.md
 │
 ├── css/
@@ -57,12 +60,12 @@ NATO web site/
 | --- | --- | --- |
 | Hero / project card | `#overview` | `meta` (title, summary, `stats` tiles, `partners` chips) |
 | Consortium map | in `#overview` | `meta.sites`, `meta.mapHighlights`, `meta.mapExtent` |
-| Project objectives | `#about` | `about.keyPoints`, `about.flow` (scientific scope panel) |
-| Research topics | `#topics` | `topics[]` (each topic maps to a work package) |
+| Project Overview | `#about` | `about.keyPoints`, `about.flow`, `topics[]` |
 | Team | `#team` | `teams[]` → `members[]` |
-| Key results | `#results` | `results.metrics[]`, `results.lists[]` |
-| Publications | `#publications` | `publications[]` |
-| News & updates | `#news` | `news[]` |
+| Key results | `results.html#results` | `results.metrics[]`, `results.lists[]` |
+| Publications | `results.html#publications` | `publications[]` |
+| News & updates | `news.html` | `news[]` |
+| Gallery | `gallery.html` | `gallery.sections[]` |
 | Funding attribution | `#acknowledgment` | `funding` |
 | Contact | `#contact` | `contact` |
 
@@ -105,6 +108,38 @@ All content is in [`js/data.js`](js/data.js) — you do not need to edit HTML.
 10. **Funding & contact**: `funding`, `contact`.
 
 Every `accent` field accepts `"blue"`, `"green"`, `"amber"` or `"violet"`.
+
+### Gallery photographs
+
+Photographs live in a subfolder of `assets/gallery/` named after their section:
+`assets/gallery/team/` and `assets/gallery/lab/`. A static page cannot list a directory,
+so each file must also be named in `js/data.js`:
+
+```js
+gallery: {
+  sections: [
+    {
+      id: "team", folder: "team", accent: "blue", title: "Team",
+      description: "…",
+      images: [
+        { file: "kickoff-meeting.jpg", caption: "Project kickoff meeting" },
+        { file: "lab-visit.jpg" }        // caption optional
+      ]
+    }
+  ]
+}
+```
+
+`file` is the filename only — the folder comes from the section's `folder` field. A section
+with no images shows a short note saying where to put them, so the page stays usable.
+Adding a section to the array adds it to the page and to the jump links at the top.
+
+Each section renders as a viewer: the first image fills a large stage, the rest sit in a
+thumbnail strip below it. Visitors move between photographs with the arrows, by clicking a
+thumbnail, by clicking the large image (advances one), or with the left/right arrow keys once
+the viewer has focus. A section with a single image shows the stage alone, without arrows or
+thumbnails. Portrait and landscape photographs can be mixed freely — the stage keeps a fixed
+3:2 frame and fills the margins with a blurred copy of the photograph.
 
 ### Map dependencies
 

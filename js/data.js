@@ -1,6 +1,6 @@
 /**
- * NGES — NATO SPS Multi-Year Project Application
- * Content transcribed from: SPS_MYP Application Form_Paul-Boncour-Strizhak.docx
+ * NGES — NATO SPS Multi-Year Project
+ * Content transcribed from: Form_Paul-Boncour-Strizhak.docx
  * ----------------------------------------------------------------------------
  * Every section rendered on the page is driven by this file.
  * Edit the values here; no HTML changes are required.
@@ -11,17 +11,16 @@
 const projectData = {
   meta: {
     acronym: "NGES",
-    badge: "SPS MYP Application",
-    eyebrow: "NATO Science for Peace and Security — Multi-Year Project Application",
+    badge: "SPS MYP",
+    eyebrow: "NATO Science for Peace and Security — Multi-Year Project",
     fullTitle: "New Green Energy Solution",
     tagline: "Metal hydride catalysts for green fuel from carbon oxides",
 
-    /* No SPS project reference is assigned until the application is approved. */
     grantReference: null,
 
     duration: "36 months",
     domain: "Catalysis · Metal hydrides · Green fuel",
-    summary: "Innovative catalysts for the hydrogenation of carbon monoxide and carbon dioxide with molecular hydrogen, for green fuel production. Efficient catalysts are developed from metal hydrides and metal hydride composite materials, culminating in a laboratory batch of hydride-based catalysts — opening new avenues for industrial and military applications that use hydrogen and/or metal hydrides.",
+    summary: "Innovative metal hydride catalysts are being developed to hydrogenate carbon monoxide and carbon dioxide into green fuels. A successful laboratory batch of these efficient composite materials opens new avenues for industrial hydrogen applications.",
 
     /* Hero metric tiles */
     stats: [
@@ -61,15 +60,15 @@ const projectData = {
     keyPoints: [
       {
         title: "Metal Hydrides as Catalysts",
-        description: "Extending CO/CO₂ hydrogenation beyond transition metals, carbides and organometallic complexes by exploring metal hydrides — materials known until now for hydrogen storage. Preliminary results indicate that even motor fuel may be obtained this way."
+        description: "Taking metal hydrides — known until now for hydrogen storage — into catalysis. Preliminary results indicate that even motor fuel may be obtained this way."
       },
       {
         title: "Green Fuel from Carbon Oxides",
-        description: "Fischer-Tropsch-type conversion of CO and CO₂ with molecular hydrogen into aliphatic hydrocarbons, with the selectivity of the process controlled through catalyst composition and reactor design."
+        description: "Fischer-Tropsch-type conversion of CO and CO₂ into aliphatic hydrocarbons, with selectivity controlled through catalyst composition and reactor design."
       },
       {
         title: "Energy & Environmental Security",
-        description: "SPS Key Priorities 1b (Energy Security — technological aspects) and 1e (Environmental Security), cutting greenhouse-gas emissions while reducing dependence on vulnerable fossil-fuel supply chains, including in the military domain."
+        description: "SPS Key Priorities 1b and 1e: cutting greenhouse-gas emissions while reducing dependence on vulnerable fuel supply chains."
       }
     ],
     /* Conceptual process diagram rendered beside the objectives */
@@ -97,7 +96,7 @@ const projectData = {
       wp: "Task 1",
       accent: "blue",
       title: "Conditions for Catalytic Testing of Metal Hydrides",
-      description: "Modernisation of the experimental facility and determination of the operating window for carbon oxide hydrogenation: temperature and pressure ranges, linear and volumetric flow rates, reactant ratios and contact time, in both kinetic and diffusion regimes.",
+      description: "Modernising the experimental facility and fixing the operating window for carbon oxide hydrogenation: temperature, pressure, flow rates, reactant ratios and contact time.",
       lead: "IPCh-NASU · PhMI-NASU · ICMPE",
       milestone: "18 months — New and modernised equipment installed; intermetallics and their hydrides"
     },
@@ -106,7 +105,7 @@ const projectData = {
       wp: "Task 2",
       accent: "green",
       title: "Catalytic & Physicochemical Properties of RMgCo₄Hₓ Hydrides",
-      description: "Synthesis of parent RMgCo₄ compounds (R = Y, La, Ce, Gd) by arc-melting and sintering, hydrogenation to RMgCo₄Hₓ (x = 5–6) at 10 bar H₂ on a Sieverts-type apparatus, and measurement of PCT diagrams and thermodesorption spectra.",
+      description: "Parent RMgCo₄ compounds (R = Y, La, Ce, Gd) by arc-melting and sintering, hydrogenated at 10 bar H₂ on a Sieverts-type apparatus, with PCT diagrams and thermodesorption spectra.",
       lead: "IPCh-NASU · PhMI-NASU · ICMPE",
       milestone: "Completion at month 18 — Catalyst for carbon oxide reduction at different conditions"
     },
@@ -115,7 +114,7 @@ const projectData = {
       wp: "Task 3",
       accent: "amber",
       title: "Catalytic & Physicochemical Properties of TiV₂, ZrV₂ and HfV₂",
-      description: "Arc-melting and homogenising annealing of the parent intermetallics, hydrogenation to the hydrides (x ≈ 5), and correlation of catalytic behaviour with electronic state, phase composition, dispersity, homogeneity and crystallinity.",
+      description: "Arc-melted and annealed intermetallics hydrogenated to x ≈ 5, correlating catalytic behaviour with electronic state, phase composition, dispersity and crystallinity.",
       lead: "IPCh-NASU · PhMI-NASU · ICMPE",
       milestone: "Completion at month 27 — New physicochemical data on catalytic activity"
     },
@@ -124,7 +123,7 @@ const projectData = {
       wp: "Task 4",
       accent: "violet",
       title: "Metal Hydride-Based Catalyst for Carbon Oxide Hydrogenation",
-      description: "Complex hydrides Mg₂NiH₄, Mg₂CoH₅ and Mg₂FeH₆ plus mechanochemically milled MgH₂ composites (Fritsch Pulverisette-6, up to 10 bar H₂), followed by scale-up of the best catalyst and verification of activity, selectivity, mechanical and thermal stability under industrially relevant conditions.",
+      description: "Complex hydrides Mg₂NiH₄, Mg₂CoH₅ and Mg₂FeH₆ plus milled MgH₂ composites, then scale-up of the best catalyst and verification under industrially relevant conditions.",
       lead: "PhMI-NASU · IPCh-NASU · ICMPE",
       milestone: "Completion at month 36 — Modified metal hydride-based catalyst"
     }
@@ -212,6 +211,21 @@ const projectData = {
           role: "Head of department",
           task: "Consultation and project discussions; presentation of the results",
           time: "10%"
+        },
+        {
+          name: "Dr. Vasyl Berezovets",
+          role: "Senior researcher · young scientist",
+          task: "Mechanical alloying and reactive ball milling; installation and modernisation of equipment; preparation of MgH₂-based composites and studies of their hydrolysis reactions",
+          time: "60%"
+        },
+        {
+          /* Not listed in the participants table of the application form.
+             Placed with the Lviv team and given a task based on his published
+             work on MgH₂ composites with Zavaliy and Berezovets; confirm his
+             role and share of time. */
+          name: "Dr. Oleksandr Kononiuk",
+          role: "Researcher",
+          task: "MgH₂-based composite materials; hydrogen absorption–desorption and hydrolysis performance"
         },
         {
           name: "Dr. Khrystyna Vlad",
@@ -379,10 +393,37 @@ const projectData = {
     }
   ],
 
-  funding: {
-    headline: "Submitted to the NATO Science for Peace and Security Programme",
-    footer: "Multi-Year Project application to the NATO Science for Peace and Security Programme: €300,000 requested over 36 months. No SPS project reference assigned yet.",
-    text: "This is a Multi-Year Project application to the NATO Science for Peace and Security (SPS) Programme, requesting €300,000 over 36 months — €80,000 for the NATO-country participants and €220,000 for the partner-country participants — alongside €251,800 of national funding. The SPS Programme promotes practical, result-oriented, security-related scientific activities and non-military cooperation among NATO Allies and partner nations. No SPS project reference has been assigned yet; add the grant number and the official SPS emblem here once the project is approved."
+  /* Gallery (gallery.html). Each section maps to a subfolder of assets/gallery/,
+     so `folder: "team"` means the files live in assets/gallery/team/.
+     Static pages cannot list a directory, so every image is named here.
+     Add a file to the folder and a line to `images` — `caption` is optional. */
+  gallery: {
+    sections: [
+      {
+        id: "team",
+        folder: "team",
+        accent: "blue",
+        title: "Team",
+        description: "The people behind the project, at work and at project meetings.",
+        images: [
+          // { file: "kickoff-meeting.jpg", caption: "Project kickoff meeting" },
+          { file: "department7.jpg", caption: "Department #7 of Karpenko Physico-mechanical Institute of NASU" },
+          { file: "vb.jpg", caption: "Dr. Vasyl Berezovets @ SCTE conference" },
+          { file: "khv.jpg", caption: "Dr. Khrystyna Vlad in lab" },
+          { file: "ok.jpg", caption: "Dr. Oleksandr Kononiuk in lab" },
+        ]
+      },
+      {
+        id: "lab",
+        folder: "lab",
+        accent: "green",
+        title: "Lab",
+        description: "Equipment, syntheses and measurements across the three laboratories.",
+        images: [
+          // { file: "sieverts-rig.jpg", caption: "Sieverts-type apparatus, Lviv" },
+        ]
+      }
+    ]
   },
 
   contact: {

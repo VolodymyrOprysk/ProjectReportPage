@@ -66,6 +66,7 @@ function initProjectData() {
   renderResults(results);
   renderPublications(publications);
   renderNews(news);
+  renderGallery(projectData.gallery);
   renderFunding(funding, meta);
   renderContact(contact);
 }
@@ -438,15 +439,156 @@ function renderNews(news) {
   `).join('');
 }
 
+/**
+ * Gallery page. Each section is rendered from its own subfolder of
+ * assets/gallery/ as a viewer: one large image plus a thumbnail strip.
+ * A section with no images yet shows where to put them.
+ */
+function renderGallery(gallery) {
+  const container = document.getElementById('gallery-container');
+  const jump = document.getElementById('gallery-jump');
+  const sections = (gallery && gallery.sections) || [];
+  if (!container || !sections.length) return;
+
+  container.innerHTML = sections.map((section, index) => {
+    const folder = `assets/gallery/${section.folder}/`;
+    const images = section.images || [];
+    const many = images.length > 1;
+
+    const thumbs = images.map((image, i) => `
+      <button type="button" role="tab" class="viewer-thumb${i === 0 ? ' is-active' : ''}"
+              aria-selected="${i === 0 ? 'true' : 'false'}"
+              data-src="${esc(folder + image.file)}"
+              data-caption="${esc(image.caption || '')}">
+        <img src="${esc(folder + image.file)}" alt="${esc(image.caption || `${section.title} photo ${i + 1}`)}" loading="lazy">
+      </button>
+    `).join('');
+
+    const viewer = !images.length ? '' : `
+      <div class="gallery-viewer" tabindex="0" role="group"
+           aria-label="${esc(section.title)} photographs" aria-roledescription="carousel">
+        <div class="viewer-stage">
+          <img class="viewer-backdrop" src="${esc(folder + images[0].file)}" alt="" aria-hidden="true">
+          <img class="viewer-image" src="${esc(folder + images[0].file)}"
+               alt="${esc(images[0].caption || section.title)}">
+          ${many ? `
+            <button type="button" class="viewer-nav viewer-prev" aria-label="Previous photograph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </button>
+            <button type="button" class="viewer-nav viewer-next" aria-label="Next photograph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                   stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+            <span class="viewer-counter mono-label" aria-hidden="true">1 / ${images.length}</span>
+          ` : ''}
+        </div>
+        <p class="viewer-caption" role="status">${esc(images[0].caption || '')}</p>
+        ${many ? `<div class="viewer-thumbs" role="tablist" aria-label="Choose a photograph">${thumbs}</div>` : ''}
+      </div>
+    `;
+
+    const empty = `
+      <div class="gallery-empty">
+        <span class="mono-label">No photographs yet</span>
+      </div>
+    `;
+
+    return `
+      <section class="section${index % 2 ? '' : ' section-alt'}" id="gallery-${esc(section.id)}"
+               data-accent="${esc(section.accent || 'blue')}">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-subtitle${index % 2 ? ' nato-style' : ''}">${esc(section.title)} photos</span>
+            <div class="section-title-row">
+              <h2 class="section-title">${esc(section.title)}</h2>
+              <span class="mono-label section-meta">${images.length} ${images.length === 1 ? 'photo' : 'photos'}</span>
+            </div>
+            ${section.description ? `<p class="section-description">${esc(section.description)}</p>` : ''}
+          </div>
+          ${images.length ? viewer : empty}
+        </div>
+      </section>
+    `;
+  }).join('');
+
+  if (jump) {
+    jump.innerHTML = sections.map(section => `
+      <a href="#gallery-${esc(section.id)}" data-accent="${esc(section.accent || 'blue')}">
+        ${esc(section.title)}<span class="jump-count">${(section.images || []).length}</span>
+      </a>
+    `).join('');
+  }
+
+  initGalleryViewers();
+}
+
+/**
+ * Wires each gallery viewer: arrows, thumbnail clicks, a click on the large
+ * image to advance, and left/right keys while the viewer has focus.
+ */
+function initGalleryViewers() {
+  document.querySelectorAll('.gallery-viewer').forEach(viewer => {
+    const stage = viewer.querySelector('.viewer-image');
+    const backdrop = viewer.querySelector('.viewer-backdrop');
+    const caption = viewer.querySelector('.viewer-caption');
+    const counter = viewer.querySelector('.viewer-counter');
+    const thumbs = [...viewer.querySelectorAll('.viewer-thumb')];
+    if (!stage || thumbs.length < 2) return;
+
+    let index = 0;
+
+    const show = (next, scrollThumb) => {
+      index = (next + thumbs.length) % thumbs.length;
+      const thumb = thumbs[index];
+
+      stage.src = thumb.dataset.src;
+      stage.alt = thumb.dataset.caption || '';
+      if (backdrop) backdrop.src = thumb.dataset.src;
+      if (caption) caption.textContent = thumb.dataset.caption || '';
+      if (counter) counter.textContent = `${index + 1} / ${thumbs.length}`;
+
+      thumbs.forEach((item, i) => {
+        item.classList.toggle('is-active', i === index);
+        item.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+
+      if (scrollThumb) thumb.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+    };
+
+    thumbs.forEach((thumb, i) => thumb.addEventListener('click', () => show(i, true)));
+    viewer.querySelector('.viewer-prev')?.addEventListener('click', () => show(index - 1, true));
+    viewer.querySelector('.viewer-next')?.addEventListener('click', () => show(index + 1, true));
+    stage.addEventListener('click', () => show(index + 1, true));
+
+    viewer.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      show(index + (event.key === 'ArrowLeft' ? -1 : 1), true);
+    });
+  });
+}
+
 /** NATO SPS funding attribution, mirrored into the footer. */
 function renderFunding(funding, meta) {
-  if (!funding) return;
+  const card = document.getElementById('footer-disclaimer');
+
+  // No funding data configured: hide the footer card rather than leave it blank.
+  if (!funding) {
+    if (card) card.style.display = 'none';
+    return;
+  }
 
   setText('funding-headline', funding.headline);
   setText('funding-text', funding.text);
 
-  const disclaimer = document.getElementById('footer-disclaimer');
+  const disclaimer = card;
   if (disclaimer) {
+    disclaimer.style.display = '';
     if (meta && meta.grantReference) {
       disclaimer.textContent = `Supported by the NATO Science for Peace and Security Programme (Multi-Year Project ${meta.grantReference}). Opinions, findings and conclusions expressed are those of the authors.`;
     } else {
@@ -498,13 +640,15 @@ function initNavigation() {
     header?.classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
-  // Active section indicator
-  const sections = document.querySelectorAll('main > section[id]');
+  // Active section indicator. Only in-page links take part, so a link to
+  // another page (news.html, gallery.html) keeps the highlight it was given.
+  const anchorLinks = [...navLinks].filter(link => (link.getAttribute('href') || '').startsWith('#'));
+  const sections = document.querySelectorAll('main > section[id], #gallery-container > section[id]');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       const id = entry.target.getAttribute('id');
-      navLinks.forEach(link => {
+      anchorLinks.forEach(link => {
         link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
       });
     });

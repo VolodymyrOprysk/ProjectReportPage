@@ -510,7 +510,7 @@
 
 /* ---------- Team ---------- */
 .team-group {
-  margin-bottom: 3.25rem;
+  margin-bottom: 2.25rem;
 }
 
 .team-group:last-child {
@@ -551,7 +551,7 @@
 .member-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-  gap: 1.5rem 1.75rem;
+  gap: 1.35rem 1.6rem;
 }
 
 /* Compact member card: circular avatar beside the details */
@@ -857,6 +857,210 @@
   color: var(--text-muted);
 }
 
+/* ---------- Gallery viewer ---------- */
+.gallery-viewer {
+  outline: none;
+  max-width: 1040px;
+}
+
+.gallery-viewer:focus-visible .viewer-stage {
+  border-color: var(--a, var(--nato-blue));
+  box-shadow: 0 0 0 3px var(--a-tint, var(--nato-light-blue));
+}
+
+/* Large image */
+.viewer-stage {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  max-height: clamp(600px, 128vh, 900px);
+  background: var(--bg-surface-muted);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Blurred fill behind the photograph, so portrait shots in a landscape
+   stage read as deliberate rather than as empty margins */
+.viewer-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.2);
+  filter: blur(26px) saturate(1.15);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.viewer-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+}
+
+/* Prev / next */
+.viewer-nav {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(6px);
+  color: var(--nato-navy);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.viewer-nav svg {
+  width: 20px;
+  height: 20px;
+}
+
+.viewer-nav:hover {
+  background: #ffffff;
+  border-color: var(--a, var(--nato-blue));
+  color: var(--a-deep, var(--nato-blue));
+  box-shadow: var(--shadow-md);
+}
+
+.viewer-prev {
+  left: 0.85rem;
+}
+
+.viewer-next {
+  right: 0.85rem;
+}
+
+.viewer-counter {
+  position: absolute;
+  z-index: 2;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-tile);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: 0.66rem;
+}
+
+.viewer-caption {
+  min-height: 1.5rem;
+  margin-top: 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+/* Thumbnail strip */
+.viewer-thumbs {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding-bottom: 0.35rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+}
+
+.viewer-thumb {
+  flex: none;
+  width: 104px;
+  aspect-ratio: 3 / 2;
+  padding: 0;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface-muted);
+  overflow: hidden;
+  cursor: pointer;
+  scroll-snap-align: start;
+  opacity: 0.72;
+  transition: all var(--transition-fast);
+}
+
+.viewer-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.viewer-thumb:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.viewer-thumb.is-active {
+  opacity: 1;
+  border-color: var(--a, var(--nato-blue));
+  box-shadow: 0 0 0 2px var(--a-tint, var(--nato-light-blue));
+}
+
+/* Shown until photographs are added to the folder */
+.gallery-empty {
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-muted);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.gallery-empty .mono-label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--a-deep, var(--nato-navy));
+}
+
+.gallery-empty code {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-tile);
+  padding: 0.15rem 0.4rem;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .viewer-stage {
+    aspect-ratio: 4 / 3;
+    max-height: clamp(240px, 50vh, 440px);
+  }
+
+  .viewer-nav {
+    width: 36px;
+    height: 36px;
+  }
+
+  .viewer-prev {
+    left: 0.5rem;
+  }
+
+  .viewer-next {
+    right: 0.5rem;
+  }
+
+  .viewer-thumb {
+    width: 82px;
+  }
+}
+
 /* ---------- NATO SPS funding attribution ---------- */
 .sps-acknowledgment-box {
   background: linear-gradient(135deg, var(--nato-deep-navy) 0%, var(--nato-navy) 100%);
@@ -884,17 +1088,15 @@
   pointer-events: none;
 }
 
+/* Light plate so the dark NATO emblem reads against the navy panel */
 .sps-emblem {
-  width: 84px;
-  height: 84px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.9rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
   flex-shrink: 0;
 }
 
@@ -922,6 +1124,11 @@
 .contact-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+/* Contact without the enquiry form: one full-width panel */
+.contact-wrapper.is-solo {
+  grid-template-columns: minmax(0, 1fr);
   background: #ffffff;
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
@@ -954,6 +1161,23 @@
   flex-direction: column;
   gap: 1.25rem;
   list-style: none;
+}
+
+.is-solo .contact-detail-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem 2rem;
+}
+
+.is-solo .contact-info-panel p {
+  max-width: 62ch;
+  margin-bottom: 1.75rem;
+}
+
+.is-solo .contact-footnote {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .contact-detail-item {

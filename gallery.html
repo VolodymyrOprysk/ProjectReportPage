@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Photographs of the NGES consortium team and the laboratories in Paris, Kyiv and Lviv.">
+  <meta name="keywords"
+    content="New Green Energy Solution, NGES, NATO SPS, metal hydrides, CO2 hydrogenation, carbon monoxide, green fuel, catalysis, hydrogen storage">
+  <meta name="theme-color" content="#004990">
+  <title>Gallery | NGES — NATO SPS Multi-Year Project</title>
+
+  <!-- Google Fonts: Outfit (Headings), Inter (Body), JetBrains Mono (Labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+    <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+  <!-- Four-hue accent strip (mockup signature) -->
+  <div class="accent-strip" aria-hidden="true">
+    <span style="flex: 2; background: var(--accent-blue);"></span>
+    <span style="flex: 1; background: var(--accent-green);"></span>
+    <span style="flex: 1; background: var(--accent-amber);"></span>
+    <span style="flex: 1; background: var(--accent-violet);"></span>
+  </div>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a href="index.html#overview" class="brand-logo" aria-label="NATO Scientific Project Homepage">
+        <img src="assets/icons/nato-logo.png" alt="NATO Compass Emblem" width="60" height="60">
+        <div class="brand-text-group">
+          <span class="brand-acronym" id="header-acronym">NGES</span>
+          <span class="brand-tagline" id="header-grant">SPS G-5892</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="main-nav" id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#team" class="nav-link">Team</a></li>
+          <li><a href="index.html#about" class="nav-link">Project overview</a></li>
+          <li><a href="results.html" class="nav-link">Results</a></li>
+          <li><a href="news.html" class="nav-link">News</a></li>
+          <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+          <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-cta">
+          <a href="index.html#contact" class="btn btn-sm btn-primary">Project Inquiries</a>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="main-nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="container">
+        <div class="eyebrow">
+          <span class="eyebrow-mark"></span>
+          <span class="mono-label">Photographs</span>
+        </div>
+        <h1 class="page-title">Gallery</h1>
+        <p class="page-lead">
+          Photographs from the consortium: the people on the project, and the laboratories where the work is done.
+        </p>
+        <nav class="gallery-jump" id="gallery-jump" aria-label="Gallery sections">
+          <!-- Populated from js/data.js -->
+        </nav>
+      </div>
+    </section>
+
+    <div id="gallery-container">
+      <!-- Populated from js/data.js -->
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-head">
+            <img class="footer-logo" src="assets/icons/nato-logo.png" alt="NATO emblem" width="84">
+            <h4 id="footer-acronym">NGES</h4>
+          </div>
+          <p id="footer-summary"></p>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="mono-label">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#team">Team</a></li>
+            <li><a href="index.html#about">Project overview</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="mono-label">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="https://www.nato.int/cps/en/natohq/78209.htm" target="_blank" rel="noopener noreferrer">NATO
+                SPS official site</a></li>
+            <li><a href="https://www.nato.int" target="_blank" rel="noopener noreferrer">NATO HQ portal</a></li>
+            <li><a href="index.html#contact">Contact coordinator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="mono-label">Funding &amp; support</h5>
+          <div class="footer-disclaimer-card" id="footer-disclaimer"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div id="footer-copyright">© 2024-2027 NGES Consortium. All rights reserved.</div>
+        <div class="footer-bottom-meta">
+          <span>Green Energy &amp; Clean Chemistry</span>
+          <span>•</span>
+          <span>NATO SPS Supported</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Data store loaded first, followed by controller -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
