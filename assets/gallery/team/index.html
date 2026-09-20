@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="New Green Energy Solution (NGES) - Supported by the NATO Science for Peace and Security (SPS) Programme.">
+  <meta name="keywords"
+    content="New Green Energy Solution, NGES, NATO SPS, metal hydrides, CO2 hydrogenation, carbon monoxide, green fuel, catalysis, hydrogen storage">
+  <meta name="theme-color" content="#004990">
+  <title>New Green Energy Solution | NATO Science for Peace and Security Project</title>
+
+  <!-- Google Fonts: Outfit (Headings), Inter (Body), JetBrains Mono (Labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Map rendering: D3.js + Official Sovereign Consortium Boundaries -->
+  <script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js"
+    integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"
+    defer></script>
+  <script src="assets/maps/consortium.js" defer></script>
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+
+<body>
+
+  <!-- Four-hue accent strip (mockup signature) -->
+  <div class="accent-strip" aria-hidden="true">
+    <span style="flex: 2; background: var(--accent-blue);"></span>
+    <span style="flex: 1; background: var(--accent-green);"></span>
+    <span style="flex: 1; background: var(--accent-amber);"></span>
+    <span style="flex: 1; background: var(--accent-violet);"></span>
+  </div>
+
+  <!-- Site Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a href="#overview" class="brand-logo" aria-label="NATO Scientific Project Homepage">
+        <img src="assets/icons/nato-logo.png" alt="NATO Compass Emblem" width="60" height="60">
+        <div class="brand-text-group">
+          <span class="brand-acronym" id="header-acronym">NGES</span>
+          <span class="brand-tagline" id="header-grant">SPS G-5892</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="main-nav" id="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#overview" class="nav-link">Home</a></li>
+          <li><a href="#team" class="nav-link">Team</a></li>
+          <li><a href="#about" class="nav-link">Project Details</a></li>
+          <li><a href="results.html" class="nav-link">Results</a></li>
+          <li><a href="news.html" class="nav-link">News</a></li>
+          <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+        aria-controls="main-nav">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Project Card -->
+    <section class="hero-section" id="overview">
+      <div class="hero-backdrop-pattern"></div>
+      <div class="container hero-inner">
+        <div class="eyebrow">
+          <span class="eyebrow-mark"></span>
+          <span class="mono-label" id="hero-eyebrow">NATO Science for Peace and Security — Multi-Year Project</span>
+        </div>
+
+        <div class="hero-main">
+          <div class="hero-content">
+            <h1 class="hero-title" id="hero-title">
+              <span class="gradient-text">NGES</span>: New Green Energy Solution
+            </h1>
+
+            <p class="hero-lead" id="hero-lead">
+              A multinational scientific collaboration supported by the NATO Science for Peace and Security (SPS)
+              Programme.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#topics" class="btn btn-primary">
+                <span>Explore Research Topics</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="#team" class="btn btn-outline">Meet the Teams</a>
+            </div>
+          </div>
+
+          <!-- Consortium site map -->
+          <aside class="map-card">
+            <div class="map-head">
+              <span class="mono-label">Consortium sites</span>
+              <span class="mono-label map-count" id="map-count"></span>
+            </div>
+            <div class="map-canvas" id="site-map" role="img" aria-label="Map of partner institution locations">
+              <!-- SVG injected by js/main.js -->
+            </div>
+            <div class="map-legend" id="map-legend">
+              <!-- Populated from js/data.js -->
+            </div>
+          </aside>
+        </div>
+
+        <!-- Metric tiles, full container width -->
+        <div class="stat-grid" id="hero-stats">
+          <!-- Populated from js/data.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project Objectives -->
+    <section class="section section-alt" id="team">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Multinational Partnership</span>
+          <div class="section-title-row">
+            <h2 class="section-title">Team</h2>
+            <span class="mono-label section-meta" id="team-meta">3 groups</span>
+          </div>
+          <p class="section-description">
+            Twelve researchers in three groups — one in a NATO country and two in a NATO partner country — covering
+            catalysis, materials synthesis and advanced characterisation.
+          </p>
+        </div>
+
+        <div id="team-container">
+          <!-- Populated from js/data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Overview: objectives + research topics -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Project Overview</span>
+          <div class="section-title-row">
+            <h2 class="section-title">Catalysing Clean Energy &amp; Technological Resilience</h2>
+            <span class="mono-label section-meta" id="about-meta">Chemical sciences · Clean energy</span>
+          </div>
+          <p class="section-description">
+            Addressing energy and environmental security through international scientific cooperation on catalysis,
+            metal hydrides and green fuel production.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-points" id="about-points-container">
+            <!-- Populated from js/data.js -->
+          </div>
+          <aside class="scope-card" id="scope-card">
+            <!-- Populated from js/data.js -->
+          </aside>
+        </div>
+
+        <div class="subsection-head">
+          <h3 class="subsection-title">Research Topics</h3>
+          <span class="mono-label subsection-meta" id="topics-meta">04</span>
+        </div>
+        <p class="section-description subsection-lead">
+          The four tasks of the work plan: establishing the catalytic testing conditions, screening three families of
+          metal hydrides, and scaling up the selected catalyst.
+        </p>
+
+        <div class="topic-grid" id="topic-grid">
+          <!-- Populated from js/data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+
+
+
+
+    <!-- Contact & Coordinator Information -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle">Project Coordination</span>
+          <div class="section-title-row">
+            <h2 class="section-title">Contact</h2>
+            <span class="mono-label section-meta">Consortium steering committee</span>
+          </div>
+        </div>
+
+        <div class="contact-wrapper is-solo">
+          <!-- Left Info Panel -->
+          <div class="contact-info-panel">
+            <div>
+              <h3>Get in Touch</h3>
+              <p>
+                For scientific collaboration, post-doctoral inquiries, student exchange or general consortium questions,
+                please reach out to the lead coordinator.
+              </p>
+
+              <ul class="contact-detail-list">
+                <li class="contact-detail-item">
+                  <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                  <div>
+                    <strong class="mono-label contact-detail-key">Consortium coordinator</strong>
+                    <span id="contact-name">Prof. Dr. Volodymyr Kovalenko</span>
+                  </div>
+                </li>
+                <li class="contact-detail-item">
+                  <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <div>
+                    <strong class="mono-label contact-detail-key">Host institution</strong>
+                    <span id="contact-inst">National Academy of Sciences of Ukraine, Kyiv</span>
+                  </div>
+                </li>
+                <li class="contact-detail-item">
+                  <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <div>
+                    <strong class="mono-label contact-detail-key">Official inquiry</strong>
+                    <a id="contact-email"
+                      href="mailto:project.coordinator@nges-sps.org">project.coordinator@nges-sps.org</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="contact-footnote" id="contact-sps">
+              NATO Headquarters • Science for Peace and Security (SPS) • Boulevard Léopold III, Brussels, Belgium
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-head">
+            <img class="footer-logo" src="assets/icons/nato-logo.png" alt="NATO emblem" width="84">
+            <h4 id="footer-acronym">NGES</h4>
+          </div>
+          <p id="footer-summary"></p>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="mono-label">Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="#team">Team</a></li>
+            <li><a href="#about">Project Details</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5 class="mono-label">Resources</h5>
+          <ul class="footer-links">
+            <li><a href="https://www.nato.int/cps/en/natohq/78209.htm" target="_blank" rel="noopener noreferrer">NATO
+                SPS official site</a></li>
+            <li><a href="https://www.nato.int" target="_blank" rel="noopener noreferrer">NATO HQ portal</a></li>
+            <li><a href="#contact">Contact coordinator</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div id="footer-copyright">© 2024-2027 NGES Consortium. All rights reserved.</div>
+        <div class="footer-bottom-meta">
+          <span>Green Energy &amp; Clean Chemistry</span>
+          <span>•</span>
+          <span>NATO SPS Supported</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts: Data store loaded first, followed by controller -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
