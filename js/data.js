@@ -286,8 +286,7 @@ const projectData = {
         items: [
           "Innovative metal hydride catalysts for the hydrogenation of CO and CO₂.",
           "Optimised reaction conditions — temperature, pressure and contact time — for high yield and selectivity.",
-          "Configuration for an industrial-scale hydride-based catalyst system.",
-          "Recommendations and technology transfer to end-users, including SOE “KATEK”."
+          "Configuration of hydride-based catalyst system.",
         ]
       },
       {
