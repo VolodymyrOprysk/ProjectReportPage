@@ -408,6 +408,7 @@ const projectData = {
         images: [
           // { file: "kickoff-meeting.jpg", caption: "Project kickoff meeting" },
           { file: "department7.jpg", caption: "Department #7 of Karpenko Physico-mechanical Institute of NASU" },
+          { file: "yuv.jpg", caption: "Dr. Yuriy Verbovytskyy in lab" },
           { file: "vb.jpg", caption: "Dr. Vasyl Berezovets @ SCTE conference" },
           { file: "khv.jpg", caption: "Dr. Khrystyna Vlad in lab" },
           { file: "ok.jpg", caption: "Dr. Oleksandr Kononiuk in lab" },
