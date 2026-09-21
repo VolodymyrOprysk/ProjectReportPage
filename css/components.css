@@ -872,7 +872,7 @@
 .viewer-stage {
   position: relative;
   aspect-ratio: 3 / 2;
-  max-height: clamp(600px, 128vh, 900px);
+  max-height: clamp(480px, 128vh, 720px);
   background: var(--bg-surface-muted);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
