@@ -130,7 +130,7 @@ const projectData = {
   ],
 
   /* Three research groups across two nations.
-     Each member: name, role (position), task (contribution), time (% of time).
+     Each member: name, role (position), task (contribution).
      Add `photo: "assets/images/<file>"` to replace the initials avatar. */
   teams: [
     {
@@ -144,25 +144,21 @@ const projectData = {
           name: "Dr. Valérie Paul-Boncour",
           role: "NATO Country Project Director",
           task: "Project management and administration; sample characterisation using synchrotron radiation",
-          time: "30%"
         },
         {
           name: "Dr. Claudia Zlotea",
           role: "Senior researcher",
           task: "Characterisation by in situ XRD and XAS",
-          time: "10%"
         },
         {
           name: "Dr. Fermin Cuevas",
           role: "Senior researcher",
           task: "Hydrogenation properties and characterisation",
-          time: "10%"
         },
         {
           name: "Junxian Zhang",
           role: "Research engineer",
           task: "Characterisation by ICP",
-          time: "10%"
         }
       ]
     },
@@ -177,19 +173,16 @@ const projectData = {
           name: "Prof. Peter Strizhak",
           role: "Partner Country Project Director",
           task: "Contacts with the NPD, coordination of the Ukrainian teams, workshop organisation, reporting",
-          time: "30%"
         },
         {
           name: "Dr. Igor Bychko",
           role: "Senior researcher · young scientist",
           task: "Catalytic experiments on CO and CO₂ hydrogenation; catalyst characterisation",
-          time: "60%"
         },
         {
           name: "Dr. Sci. Andrii Trypolskyi",
           role: "Senior researcher",
           task: "Modernisation and installation of new equipment; characterisation by N₂ adsorption–desorption",
-          time: "60%"
         }
       ]
     },
@@ -204,25 +197,18 @@ const projectData = {
           name: "Dr. Yuriy Verbovytskyy",
           role: "Partner Country Co-Director",
           task: "Coordination of the team; sample preparation; X-ray phase and structural analysis",
-          time: "30%"
         },
         {
           name: "Prof. Ihor Zavaliy",
           role: "Head of department",
           task: "Consultation and project discussions; presentation of the results",
-          time: "10%"
         },
         {
           name: "Dr. Vasyl Berezovets",
           role: "Senior researcher · young scientist",
           task: "Mechanical alloying and reactive ball milling; installation and modernisation of equipment; preparation of MgH₂-based composites and studies of their hydrolysis reactions",
-          time: "60%"
         },
         {
-          /* Not listed in the participants table of the application form.
-             Placed with the Lviv team and given a task based on his published
-             work on MgH₂ composites with Zavaliy and Berezovets; confirm his
-             role and share of time. */
           name: "Dr. Oleksandr Kononiuk",
           role: "Researcher",
           task: "MgH₂-based composite materials; hydrogen absorption–desorption and hydrolysis performance"
@@ -231,7 +217,6 @@ const projectData = {
           name: "Dr. Khrystyna Vlad",
           role: "PhD · young scientist",
           task: "Alloy and nanopowder preparation",
-          time: "60%"
         }
       ]
     }
@@ -427,12 +412,10 @@ const projectData = {
   },
 
   contact: {
-    coordinator: "TBD",
+    coordinator: "Dr. Valérie Paul-Boncour",
     role: "TBD",
-    institution: "TBD",
-    address: "TBD",
-    email: "[EMAIL_ADDRESS]",
-    spsAdvisor: "TBD",
-    spsUrl: "TBD"
+    institution: "Institut de Chimie et des Matériaux Paris-Est",
+    address: "2 Rue Henri Dunant, 94320 Thiais, France",
+    email: "valerie.paul-boncour@cnrs.fr",
   }
 };
